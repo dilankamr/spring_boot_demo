@@ -20,6 +20,11 @@ public class B_DemoService {
 ////        this.a_demoService.printMessage();
 //    }
 
+    public B_DemoService()
+    {
+        log.info(">>>>>>>>>>>>>>>>>> B_DemoService constructor called");
+    }
+
     @Autowired
     public void setA_demoService(A_DemoService a_demoService)
     {

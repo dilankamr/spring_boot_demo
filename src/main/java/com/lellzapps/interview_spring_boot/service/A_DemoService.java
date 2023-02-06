@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -21,6 +22,11 @@ public class A_DemoService {
 //        log.info(">>>>>>>>>>>>>>>>>> A_DemoService constructor called");
 ////        this.b_demoService.printMessage();
 //    }
+
+    public A_DemoService()
+    {
+        log.info(">>>>>>>>>>>>>>>>>> A_DemoService constructor called");
+    }
 
     @Autowired
     public void setB_demoService(B_DemoService b_demoService)
