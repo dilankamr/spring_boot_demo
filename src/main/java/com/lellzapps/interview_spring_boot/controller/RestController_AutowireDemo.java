@@ -4,9 +4,24 @@ import com.lellzapps.interview_spring_boot.service.C_DemoService;
 import com.lellzapps.interview_spring_boot.service.D_DemoService;
 import com.lellzapps.interview_spring_boot.service.E_DemoService;
 import com.lellzapps.interview_spring_boot.service.F_DemoService;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RestController;
+
+
+/*
+
+Autowire precedence
+
+1. Bean Type
+2. @Resource(name = "...")
+3. @Qualifier(name = "...")
+4. Primary
+5. Assumed @Qualifier name (property name)
+
+ */
 
 @RestController
 public class RestController_AutowireDemo {
@@ -14,6 +29,11 @@ public class RestController_AutowireDemo {
     @Autowired
     private C_DemoService cDemoService;
 
+    @PostConstruct
+    public void printCDemoService()
+    {
+        this.cDemoService.printMessage();
+    }
 
     private D_DemoService dDemoService;
 
@@ -22,7 +42,6 @@ public class RestController_AutowireDemo {
     {
         this.dDemoService = dDemoService;
 
-        this.cDemoService.printMessage();
         this.dDemoService.printMessage();
     }
 
@@ -73,5 +92,25 @@ public class RestController_AutowireDemo {
         this.fDemoService1.printMessage();
         this.fDemoService2.printMessage();
         this.fDemoService3.printMessage();
+    }
+
+
+    @Resource(name = "fDemoService")
+    private F_DemoService fDemoService4;
+
+    @Resource
+    @Qualifier("f_demoService")
+    private F_DemoService fDemoService5;
+
+    @Resource(name = "fDemoService")
+    @Qualifier("f_demoService")
+    private F_DemoService fDemoService6;
+
+    @PostConstruct
+    public void printFDemoService()
+    {
+        this.fDemoService4.printMessage(); // @Resource(name = "fDemoService") -> fDemoService()
+        this.fDemoService5.printMessage(); // @Qualifier(name = "f_demoService") -> @Service("f_demoService")
+        this.fDemoService6.printMessage(); // @Resource(name = "fDemoService") -> fDemoService()
     }
 }
