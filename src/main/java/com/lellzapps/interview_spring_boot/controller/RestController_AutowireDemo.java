@@ -15,11 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 Autowire precedence
 
-1. Bean Type
-2. @Resource(name = "...")
+1. Bean Type                >>>> [mandatory] <<<<
+2. @Qualifier(name = "...")
+3. Primary
+4. Assumed @Qualifier name (property name)
+
+
+Resource precedence
+
+1. @Resource(name = "...")  >>>> [mandatory] <<<<
+2. Bean Type                >>>> [mandatory] <<<<
 3. @Qualifier(name = "...")
 4. Primary
 5. Assumed @Qualifier name (property name)
+
+
+Inject precedence
+
+1. Bean Type                >>>> [mandatory] <<<<
+2. @Qualifier(name = "...")
+3. Primary
+4. Assumed @Qualifier name (property name)
 
  */
 
