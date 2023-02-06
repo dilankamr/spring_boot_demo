@@ -28,9 +28,9 @@ public class RestController_BeanNamingDemo {
         this.dbServiceBeanNamingDemo3 = dbServiceBeanNamingDemo3;
         this.dbServiceBeanNamingDemo4 = dbServiceBeanNamingDemo4;
 
-        log.info(">>>>>>>>>>>>>>>>>>>> " + this.dbServiceBeanNamingDemo1.serviceMessage());
-        log.info(">>>>>>>>>>>>>>>>>>>> " + this.dbServiceBeanNamingDemo2.serviceMessage());
-        log.info(">>>>>>>>>>>>>>>>>>>> " + this.dbServiceBeanNamingDemo3.serviceMessage());
-        log.info(">>>>>>>>>>>>>>>>>>>> " + this.dbServiceBeanNamingDemo4.serviceMessage());
+        log.info("************ " + this.dbServiceBeanNamingDemo1.serviceMessage());
+        log.info("************ " + this.dbServiceBeanNamingDemo2.serviceMessage());
+        log.info("************ " + this.dbServiceBeanNamingDemo3.serviceMessage());
+        log.info("************ " + this.dbServiceBeanNamingDemo4.serviceMessage());
     }
 }

@@ -17,7 +17,7 @@ public class RestController_DependencyInjectionDemo {
     @Autowired
     public RestController_DependencyInjectionDemo(UserService userService)
     {
-        log.info("RestController_DependencyInjectionDemo constructor called");
+        log.info(">>>>>>>>>>>>>>>>>> RestController_DependencyInjectionDemo(UserService userService) constructor called");
 
         this.userService = userService;
         this.userService.printMessage();
@@ -26,7 +26,7 @@ public class RestController_DependencyInjectionDemo {
     @Autowired
     public void setUserRepository(UserRepository userRepository)
     {
-        log.info("RestController_DependencyInjectionDemo setUserRepository setter called");
+        log.info(">>>>>>>>>>>>>>>>>> RestController_DependencyInjectionDemo setUserRepository setter called");
 
         this.userRepository = userRepository;
         log.info(this.userRepository.getMessage());
