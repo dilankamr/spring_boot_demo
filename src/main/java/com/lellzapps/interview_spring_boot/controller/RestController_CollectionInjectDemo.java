@@ -1,9 +1,11 @@
 package com.lellzapps.interview_spring_boot.controller;
 
 import com.lellzapps.interview_spring_boot.service.E_DemoService;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,6 +23,11 @@ public class RestController_CollectionInjectDemo {
     Map<Integer, Character> integerCharacterMap;
 
     List<E_DemoService> eDemoServiceList;
+
+    @Autowired(required = false)
+    @Qualifier("no-such-qualifier")
+    @Value("#{T(java.util.Collections).emptyList()}")
+    List<E_DemoService> eDemoServiceList2;
 
     @Autowired
     public void setStringList(List<String> stringList)
@@ -55,5 +62,12 @@ public class RestController_CollectionInjectDemo {
         {
             eDemoService.printMessage();
         }
+    }
+
+
+    @PostConstruct
+    public void printEDemoServiceList2()
+    {
+        System.out.println("************ " + this.eDemoServiceList2.toString());
     }
 }
