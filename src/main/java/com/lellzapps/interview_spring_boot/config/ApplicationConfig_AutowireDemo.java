@@ -7,41 +7,53 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 
 @Slf4j
 @Configuration
 public class ApplicationConfig_AutowireDemo {
 
+    @Order(Ordered.HIGHEST_PRECEDENCE)
     @Bean
     E_DemoService getEDemoServiceBean_NamedByMethod()
     {
         log.info(">>>>>>>>>>>>>>>>>> E_DemoService getEDemoServiceBean_NamedByMethod method called");
-        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByMethod method");
+        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByMethod method (@Order(Ordered.HIGHEST_PRECEDENCE))");
     }
 
+    @Order(Ordered.LOWEST_PRECEDENCE)
     @Bean("eDemoServiceBean_NamedByBean")
     E_DemoService getEDemoServiceBean_NamedByBean()
     {
         log.info(">>>>>>>>>>>>>>>>>> E_DemoService getEDemoServiceBean_NamedByBean method called");
-        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByBean method");
+        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByBean method (@Order(Ordered.LOWEST_PRECEDENCE))");
     }
 
-    @Bean
-    @Qualifier("eDemoServiceBean_NamedByQualifier")
-    E_DemoService getEDemoServiceBean_NamedByQualifier()
-    {
-        log.info(">>>>>>>>>>>>>>>>>> E_DemoService getEDemoServiceBean_NamedByQualifier method called");
-        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByQualifier method");
-    }
-
+    @Order(1)
     @Bean("eDemoServiceBean_NamedByBeanAndQualifierBoth_Bean")
     @Qualifier("eDemoServiceBean_NamedByBeanAndQualifierBoth_Qualifier")
     E_DemoService getEDemoServiceBean_NamedByBeanAndQualifierBoth()
     {
         log.info(">>>>>>>>>>>>>>>>>> E_DemoService getEDemoServiceBean_NamedByBeanAndQualifierBoth method called");
-        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByBeanAndQualifierBoth method");
+        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByBeanAndQualifierBoth method (@Order(1) - first)");
     }
 
+    @Order(1)
+    @Bean
+    @Qualifier("eDemoServiceBean_NamedByQualifier")
+    E_DemoService getEDemoServiceBean_NamedByQualifier()
+    {
+        log.info(">>>>>>>>>>>>>>>>>> E_DemoService getEDemoServiceBean_NamedByQualifier method called");
+        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByQualifier method (@Order(1) - second)");
+    }
+
+    @Bean(autowireCandidate = false)
+    E_DemoService getEDemoServiceBean_AutowireCandidateFalse()
+    {
+        log.info(">>>>>>>>>>>>>>>>>> E_DemoService getEDemoServiceBean_AutowireCandidateFalse method called");
+        return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_AutowireCandidateFalse method");
+    }
 
     @Bean
     F_DemoService fDemoService()
