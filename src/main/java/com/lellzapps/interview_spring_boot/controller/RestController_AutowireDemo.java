@@ -16,26 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 Autowire precedence
 
 1. Bean Type                >>>> [mandatory] <<<<
-2. @Qualifier(name = "...")
+2. @Qualifier(name = "...") {bean name [@Bean(name="...") or ClassName -> className or methodName() -> methodName]  or qualifier name}
 3. Primary
-4. Assumed @Qualifier name (property name)
+4. filedName or Setter ParameterName
 
 
 Resource precedence
 
-1. @Resource(name = "...")  >>>> [mandatory (must match or empty - for unmatched, fail to autowire)] <<<<
+1. @Resource(name = "...")  >>>> [mandatory (must match or empty. for unmatched -> fail to autowire)] <<<<
 2. Bean Type                >>>> [mandatory] <<<<
-3. @Qualifier(name = "...")
+2. @Qualifier(name = "...") {bean name [@Bean(name="...") or ClassName -> className or methodName() -> methodName]  or qualifier name}
 4. Primary
-5. Assumed @Qualifier name (property name)
+4. filedName or Setter ParameterName
 
 
 Inject precedence
 
 1. Bean Type                >>>> [mandatory] <<<<
-2. @Qualifier(name = "...")
+2. @Qualifier(name = "...") {bean name [@Bean(name="...") or ClassName -> className or methodName() -> methodName]  or qualifier name}
 3. Primary
-4. Assumed @Qualifier name (property name)
+4. filedName or Setter ParameterName
 
  */
 
