@@ -60,4 +60,9 @@ public class DemoService_LifeCycleDemo implements InitializingBean, DisposableBe
     {
         log.info("============ DemoService_LifeCycleDemo with scope : " + this.scope + " called @Bean::destroyMethod -> customDestroy() method");
     }
+
+    public void finalize()
+    {
+        log.info("============ DemoService_LifeCycleDemo with scope : " + this.scope + " called before System.gc() -> finalize() method");
+    }
 }

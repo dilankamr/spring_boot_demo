@@ -55,6 +55,15 @@ public abstract class RestController_LifeCycleDemo {
         DemoService_LifeCycleDemo object = new DemoService_LifeCycleDemo();
         object.printScope();
 
+        singletonBean = null;
+        prototypeBean = null;
+        requestBean = null;
+        sessionBean = null;
+        applicationBean = null;
+        object = null;
+
+        System.gc();
+
         return new ResponseEntity<>("Instances Created", HttpStatus.ACCEPTED);
     }
 
