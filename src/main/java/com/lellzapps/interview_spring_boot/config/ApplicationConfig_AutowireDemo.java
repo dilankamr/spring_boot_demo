@@ -2,10 +2,12 @@ package com.lellzapps.interview_spring_boot.config;
 
 import com.lellzapps.interview_spring_boot.service.E_DemoService;
 import com.lellzapps.interview_spring_boot.service.F_DemoService;
+import jakarta.annotation.Priority;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -39,7 +41,7 @@ public class ApplicationConfig_AutowireDemo {
         return new E_DemoService("********** E_DemoService init using getEDemoServiceBean_NamedByBeanAndQualifierBoth method (@Order(1) - first)");
     }
 
-    @Order(1)
+    @Priority(1)
     @Bean
     @Qualifier("eDemoServiceBean_NamedByQualifier")
     E_DemoService getEDemoServiceBean_NamedByQualifier()

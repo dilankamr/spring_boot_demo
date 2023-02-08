@@ -24,6 +24,8 @@ public class RestController_CollectionInjectDemo {
 
     List<E_DemoService> eDemoServiceList;
 
+    Map<String, E_DemoService> eDemoServiceMap;
+
     @Autowired(required = false)
     @Qualifier("no-such-qualifier")
     @Value("#{T(java.util.Collections).emptyList()}")
@@ -62,6 +64,17 @@ public class RestController_CollectionInjectDemo {
         {
             eDemoService.printMessage();
         }
+    }
+
+    @Autowired
+    public void setEDemoServiceMap(Map<String, E_DemoService> eDemoServiceMap)
+    {
+        this.eDemoServiceMap = eDemoServiceMap;
+
+        eDemoServiceMap.forEach((key, value) -> {
+            System.out.print(key + "  ");
+            value.printMessage();
+        });
     }
 
 
