@@ -23,7 +23,7 @@ Autowire precedence
 
 Resource precedence
 
-1. @Resource(name = "...")  >>>> [mandatory] <<<<
+1. @Resource(name = "...")  >>>> [mandatory (must match or empty - for unmatched, fail to autowire)] <<<<
 2. Bean Type                >>>> [mandatory] <<<<
 3. @Qualifier(name = "...")
 4. Primary
