@@ -4,6 +4,7 @@ import com.lellzapps.interview_spring_boot.model.User;
 import com.lellzapps.interview_spring_boot.service.PrototypeService_MethodInjectionDemo;
 import com.lellzapps.interview_spring_boot.service.SingletonService_MethodInjectionDemo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ public class RestController_MethodInjectionDemo {
     private final SingletonService_MethodInjectionDemo singletonServiceMethodInjectionDemo;
 
     @Autowired
-    public RestController_MethodInjectionDemo(SingletonService_MethodInjectionDemo singletonServiceMethodInjectionDemo)
+    public RestController_MethodInjectionDemo(@Qualifier("singletonService_MethodInjectionDemo") SingletonService_MethodInjectionDemo singletonServiceMethodInjectionDemo)
     {
         this.singletonServiceMethodInjectionDemo = singletonServiceMethodInjectionDemo;
     }

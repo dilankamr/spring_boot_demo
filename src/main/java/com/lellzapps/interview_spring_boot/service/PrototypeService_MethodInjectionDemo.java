@@ -13,9 +13,9 @@ public class PrototypeService_MethodInjectionDemo {
 
     private String message;
 
-    PrototypeService_MethodInjectionDemo()
+    public PrototypeService_MethodInjectionDemo()
     {
-        this.message = "Message Created from PrototypeService_MethodInjectionDemo at:" + new Date().toLocaleString();
+        this.message = "Message Created from PrototypeService_MethodInjectionDemo at:" + new Date().getTime();
         log.info(">>>>>>>>>>>> PrototypeService_MethodInjectionDemo Constructor Called with message : " + this.message);
     }
 

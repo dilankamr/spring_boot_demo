@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Scope(value = "singleton")
 public abstract class SingletonService_MethodInjectionDemo {
 
-    SingletonService_MethodInjectionDemo()
+    public SingletonService_MethodInjectionDemo()
     {
         log.info(">>>>>>>>>>>> SingletonService_MethodInjectionDemo Constructor Called with message");
     }
